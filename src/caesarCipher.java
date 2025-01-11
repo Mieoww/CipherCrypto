@@ -1,5 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.*;
 
 public class caesarCipher {
@@ -46,7 +44,7 @@ public class caesarCipher {
             }
         }
         return new String(encrypted);
-    };
+    }
 
     public static String decrypt(String encrypt, int key)
     {
@@ -58,13 +56,13 @@ public class caesarCipher {
             char ch = arr[i];
             if(Character.isLetter(ch)){
                 int base = Character.isUpperCase(ch) ? 'A':'a';
-                plaintext[i] = (char)((ch-base)%26-key+base);
+                plaintext[i] = (char) (((ch - base - key + 26) % 26) + base);
             }else{
                 plaintext[i] = ch;
             }
 
         }
         return new String(plaintext);
-    };
+    }
 }
 
