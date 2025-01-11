@@ -12,10 +12,21 @@ public class caesarCipher {
 
         System.out.println("Eter the key : ");
         int key = sc.nextInt();
+        sc.nextLine();
 
         String encryptedText = encrypt(text, key);
 
         System.out.println("Encrypted text : "+encryptedText);
+
+        System.out.println("Enter an encrypted Text : ");
+        String a = sc.nextLine();
+
+        System.out.println("Eter the key : ");
+        int k = sc.nextInt();
+
+        String plaintext = decrypt(a, k);
+
+        System.out.println("Plain text : "+plaintext);
 
     }
     public static String encrypt(String text, int key)
@@ -37,4 +48,23 @@ public class caesarCipher {
         return new String(encrypted);
     };
 
+    public static String decrypt(String encrypt, int key)
+    {
+        char[] arr = encrypt.toCharArray();
+        char[] plaintext = new char[arr.length];
+
+        for(int i=0; i<arr.length; i++)
+        {
+            char ch = arr[i];
+            if(Character.isLetter(ch)){
+                int base = Character.isUpperCase(ch) ? 'A':'a';
+                plaintext[i] = (char)((ch-base)%26-key+base);
+            }else{
+                plaintext[i] = ch;
+            }
+
+        }
+        return new String(plaintext);
+    };
 }
+
